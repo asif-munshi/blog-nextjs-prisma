@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '../styles/globals.css'
+import TanstackProvider from './providers/TanstackProvider'
 import Header from '@/components/Header'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -18,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} box-border bg-[#0000000d]`}>
-        <div>
-          <Header />
-          <div className="px-8">{children}</div>
-        </div>
+        <TanstackProvider>
+          <div>
+            <Header />
+            <div className="px-8">{children}</div>
+          </div>
+        </TanstackProvider>
       </body>
     </html>
   )
